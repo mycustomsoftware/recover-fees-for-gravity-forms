@@ -23,7 +23,7 @@ use GravityRecoverFees\GF_Recover_Fees_In_Order;
 use GravityRecoverFees\GF_Cerover_Fees_Settings;
 use GravityRecoverFees\GF_Field_RecoverFees;
 use GravityRecoverFees\GF_SearchFilter;
-use GravityRecoverFees\GfFee;
+use GravityRecoverFees\GfRecoveryFees;
 
 if(!defined('GRAVITYRECOVERFEES_ENV')){
 	define('GRAVITYRECOVERFEES_ENV','production');
@@ -80,7 +80,7 @@ class GravityRecoverFeesMain{
 		if ( ! method_exists( 'GFForms', 'include_addon_framework' ) ) {
 			return;
 		}
-		GFAddOn::register( GfFee::class );
+		GFAddOn::register( GfRecoveryFees::class );
 		if ( ! method_exists( 'GF_Fields', 'register' ) ) {
 			return;
 		}

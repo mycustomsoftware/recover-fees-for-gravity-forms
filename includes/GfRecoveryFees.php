@@ -7,12 +7,12 @@ if(!class_exists('GFForms')){
 	return;
 }
 GFForms::include_addon_framework();
-class GfFee extends \GFAddOn
+class GfRecoveryFees extends \GFAddOn
 {
 	protected $_version = '1.0';
 	protected $_min_gravityforms_version = '1.9';
 	protected $_slug = 'gravityrecoverfees';
-	protected $_path = 'gravityrecoverfees/includes/GfFee.php';
+	protected $_path = 'gravityrecoverfees/includes/GfRecoveryFees.php';
 	protected $_full_path = __FILE__;
 	protected $_title = 'Gravity Forms Recover Fees Add-On';
 	protected $_short_title = 'Recover Fees Add-On';
