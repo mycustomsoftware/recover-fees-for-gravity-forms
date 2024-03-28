@@ -5,7 +5,7 @@ if(!class_exists('GFForms')){
 }
 use GFCommon;
 
-class GF_Recover_Fee_In_Order
+class GF_Recover_Fees_In_Order
 {
 	function __construct(){
 		add_action( 'gform_product_info', array( $this, 'gform_product_info' ), 9, 3 );

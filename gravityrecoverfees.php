@@ -1,11 +1,11 @@
 <?php
 /**
  * Plugin Name: Gravity Recover Fees
- * Plugin URI: https://wordpress.org/plugins/gravityformsfee
+ * Plugin URI: https://wordpress.org/plugins/gravityrecoverfees
  * Description: Let users cover credit card fees in Gravity Forms. Adds a new field type with a checkbox to cover fees, simple setup, customizable fees, and seamless integration boost your payment or fundraising efforts.
  * Version: 1.0.0
- * Author:      WordPress Contributors
- * Author URI: https://github.com/htmldiz
+ * Author:      My Custom Software
+ * Author URI: https://github.com/mycustomsoftware
  *  License: GPL3
  * License URI: https://www.gnu.org/licenses/gpl-3.0.html
  * Requires PHP: 8.2
@@ -19,22 +19,22 @@ define('GFCF_FILE', __FILE__);
 require_once __DIR__.'/vendor/autoload.php';
 
 use GravityRecoverFees\GF_AdminLabel;
-use GravityRecoverFees\GF_Recover_Fee_In_Order;
-use GravityRecoverFees\GF_Fee_Settings;
+use GravityRecoverFees\GF_Recover_Fees_In_Order;
+use GravityRecoverFees\GF_Cerover_Fees_Settings;
 use GravityRecoverFees\GF_Field_RecoverFees;
 use GravityRecoverFees\GF_SearchFilter;
 use GravityRecoverFees\GfFee;
 
-if(!defined('GRAVITYFORMSFEE_ENV')){
-	define('GRAVITYFORMSFEE_ENV','production');
+if(!defined('GRAVITYRECOVERFEES_ENV')){
+	define('GRAVITYRECOVERFEES_ENV','production');
 }
 class GravityRecoverFeesMain{
     public $slug = 'gravityrecoverfees';
 	private static $boot_classes = array(
 		GF_AdminLabel::class,
 		GF_SearchFilter::class,
-		GF_Recover_Fee_In_Order::class,
-		GF_Fee_Settings::class,
+		GF_Recover_Fees_In_Order::class,
+		GF_Cerover_Fees_Settings::class,
 	);
 	function __construct(){
 		add_action( 'install_plugins_pre_plugin-information', array( $this, 'add_plugin_info_popup_content' ), 9 );

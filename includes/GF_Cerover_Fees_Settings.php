@@ -2,7 +2,7 @@
 
 namespace GravityRecoverFees;
 
-class GF_Fee_Settings
+class GF_Cerover_Fees_Settings
 {
 	function __construct(){
 	    add_action('gform_field_standard_settings', array($this, 'gform_field_standard_settings'), 10, 1);

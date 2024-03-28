@@ -52,8 +52,8 @@ class GfFee extends \GFAddOn
 		$default_settings = get_option('gravityformsaddon_gravityrecoverfees_settings');
 		$default_settings['fdllabel'] = !empty($default_settings['fdllabel']) ? $default_settings['fdllabel'] : 'Help cover our transaction fees %RECOVERFEE% so 100% of your donation get\'s to us.';
 		$default_settings['fdlfixed'] = !empty($default_settings['fdlfixed']) ? $default_settings['fdlfixed'] : '0.31';
-		$mod = GRAVITYFORMSFEE_ENV == 'production' ? '.min' : '';
-		$default_settings['isDevMod'] = GRAVITYFORMSFEE_ENV;
+		$mod = GRAVITYRECOVERFEES_ENV == 'production' ? '.min' : '';
+		$default_settings['isDevMod'] = GRAVITYRECOVERFEES_ENV;
 		$scripts = array(
 			array(
 				'handle'  => 'gravityrecoverfees_js',
