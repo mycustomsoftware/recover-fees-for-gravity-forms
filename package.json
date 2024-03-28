@@ -1,0 +1,12 @@
+{
+  "name": "gravityrecoverfees",
+  "version": "1.0.0",
+  "author": "Marcus {code} <mark.tanasevich@gmail.com>",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "minify": "minify ./js/gravityrecoverfees.js  > ./js/gravityrecoverfees.min.js && minify ./js/gravityrecoverfees-admin.js > ./js/gravityrecoverfees-admin.min.js"
+  },
+  "devDependencies": {
+    "minify": "^11.1.1"
+  }
+}
