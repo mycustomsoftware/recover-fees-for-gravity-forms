@@ -21,7 +21,7 @@ require_once __DIR__.'/vendor/autoload.php';
 use GravityRecoverFees\GF_AdminLabel;
 use GravityRecoverFees\GF_Recover_Fee_In_Order;
 use GravityRecoverFees\GF_Fee_Settings;
-use GravityRecoverFees\GF_Field_RecoverFee;
+use GravityRecoverFees\GF_Field_RecoverFees;
 use GravityRecoverFees\GF_SearchFilter;
 use GravityRecoverFees\GfFee;
 
@@ -84,7 +84,7 @@ class GravityRecoverFeesMain{
 		if ( ! method_exists( 'GF_Fields', 'register' ) ) {
 			return;
 		}
-		GF_Fields::register(new GF_Field_RecoverFee());
+		GF_Fields::register(new GF_Field_RecoverFees());
 	}
 }
 new GravityRecoverFeesMain();

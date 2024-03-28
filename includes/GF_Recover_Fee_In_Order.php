@@ -16,7 +16,7 @@ class GF_Recover_Fee_In_Order
 		}
 		$recoverfees_inputId = -1;
 		foreach ( $form['fields'] as $field ) {
-			if ( $field->type === 'recoverfee') {
+			if ( $field->type === 'recoverfees') {
 				$recoverfees_inputId = $field->id;
 				$recoverfees = $field;
 			}
@@ -42,13 +42,13 @@ class GF_Recover_Fee_In_Order
 			}
 		}
 		if(!empty($entry[$recoverfees->id])){
-			$Procent    = (float)$recoverfees->ProcentFee;
-			$FixedFee   = (float)$recoverfees->FixedFee;
-			$ProcentFee = 0;
+			$Procent    = (float)$recoverfees->ProcentFees;
+			$FixedFees   = (float)$recoverfees->FixedFees;
+			$ProcentFees = 0;
 			if(!empty($Procent)){
-				$ProcentFee = $subtotal / 100 * $Procent;
+				$ProcentFees = $subtotal / 100 * $Procent;
 			}
-			$price      = $ProcentFee+$FixedFee;
+			$price      = $ProcentFees+$FixedFees;
 			$cents      = round($price);
 			$feecost    = round($price - $cents,3,PHP_ROUND_HALF_UP);
 			$feecost    = ceil($feecost*100);

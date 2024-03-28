@@ -50,7 +50,7 @@ class GfFee extends \GFAddOn
 	}
 	public function scripts() {
 		$default_settings = get_option('gravityformsaddon_gravityrecoverfees_settings');
-		$default_settings['fdllabel'] = !empty($default_settings['fdllabel']) ? $default_settings['fdllabel'] : 'Help cover our transaction fees %COVERFEE% so 100% of your donation get\'s to us.';
+		$default_settings['fdllabel'] = !empty($default_settings['fdllabel']) ? $default_settings['fdllabel'] : 'Help cover our transaction fees %RECOVERFEE% so 100% of your donation get\'s to us.';
 		$default_settings['fdlfixed'] = !empty($default_settings['fdlfixed']) ? $default_settings['fdlfixed'] : '0.31';
 		$mod = GRAVITYFORMSFEE_ENV == 'production' ? '.min' : '';
 		$default_settings['isDevMod'] = GRAVITYFORMSFEE_ENV;
@@ -89,13 +89,12 @@ class GfFee extends \GFAddOn
 					'title'  => esc_html__( 'Recover fee Add-On Settings', 'simpleaddon' ),
 					'fields' => array(
 						array(
-//							Help cover our transaction fees <b>%COVERFEE%</b> so that 100% of your donation goes to those in need.
 							'name'              => 'fdllabel',
-							'tooltip'           => 'Use <b>%COVERFEE%</b> in Field Label to display fee total</small>',
+							'tooltip'           => 'Use <b>%RECOVERFEE%</b> in Field Label to display fee total</small>',
 							'label'             => esc_html__( 'Set default field label', 'simpleaddon' ),
 							'type'              => 'text',
 							'class'             => 'small',
-							'value'             => 'Help cover our transaction fees %COVERFEE% so 100% of your donation get\'s to us.',
+							'value'             => 'Help cover our transaction fees %RECOVERFEE% so 100% of your donation get\'s to us.',
 							'validation_callback' => function( $field, $value ) {
 								return $value;
 							}

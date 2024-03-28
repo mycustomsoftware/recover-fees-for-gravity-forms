@@ -9,21 +9,21 @@ class GF_Fee_Settings
 	}
 	function gform_field_standard_settings($depth){
 		if($depth == 20){ ?>
-			<li class="fee_settings field_setting">
-                <small style="display: block;margin-top: -10px;">Use "<strong>%COVERFEE%</strong>" in Field Label to display fee total</small><br/>
+			<li class="recoverfees_settings field_setting">
+                <small style="display: block;margin-top: -10px;">Use "<strong>%RECOVERFEE%</strong>" in Field Label to display fee total</small><br/>
 				<label for="input_class_setting">
 					<?php gform_tooltip( 'input_class_setting' ) ?>
 				</label>
-				<label for="forms_fixedfee">
+				<label for="forms_fixedfees">
 					<span>Fixed amount cover fee</span><br/>
-					<input id="forms_fixedfee" type="text" class="forms_fixedfee">
+					<input id="forms_fixedfee" type="text" class="forms_fixedfees">
 				</label>
-				<label for="forms_procentfee">
+				<label for="forms_procentfees">
 					<span>Procent of Cover fee</span><br/>
-					<input id="forms_procentfee" type="text" class="forms_procentfee">
+					<input id="forms_procentfees" type="text" class="forms_procentfees">
 				</label>
-                <input id="forms_recoverfee" type="checkbox" class="forms_recoverfee">
-				<label for="forms_recoverfee">
+                <input id="forms_recoverfees" type="checkbox" class="forms_recoverfees">
+				<label for="forms_recoverfees">
 					<span>Checked by default</span><br/>
 				</label>
 			</li>

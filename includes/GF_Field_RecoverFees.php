@@ -7,14 +7,14 @@ if(!class_exists('GFForms')){
 use GF_Field;
 use GFCommon;
 
-class GF_Field_RecoverFee extends GF_Field
+class GF_Field_RecoverFees extends GF_Field
 {
-	public $type              = 'recoverfee';
-	public $ProcentFee        = 0;
-	public $FixedFee          = 0;
-	public $CoverFee          = 'no';
-	public $CoverFeeCustomer  = '';
-	public $adminLabel        = 'Recover Fee';
+	public $type              = 'recoverfees';
+	public $ProcentFees        = 0;
+	public $FixedFees          = 0;
+	public $RecoverFees          = 'no';
+	public $RecoverFeesCustomer  = '';
+	public $adminLabel        = 'Recover Fees';
 	/**
 	 * Returns the field's form editor icon.
 	 *
@@ -48,7 +48,7 @@ class GF_Field_RecoverFee extends GF_Field
 	function get_form_editor_field_settings() {
 		return array(
 			'label_setting',
-			'fee_settings',
+			'recoverfees_settings',
 			'admin_label_setting',
 		);
 	}
@@ -71,31 +71,29 @@ class GF_Field_RecoverFee extends GF_Field
 		$field_id = $is_entry_detail || $is_form_editor || $form_id == 0 ? "input_$id" : 'input_' . $form_id . "_$id";
 		$value = esc_attr( $value );
 		$placeholder_attribute = $this->get_field_placeholder_attribute();
-		$size         = 'fee';
 		$class_suffix = $is_entry_detail ? '_admin' : '';
-		$class        = $size . $class_suffix;
+		$class        = 'fees' . $class_suffix;
 		$class        = esc_attr( $class );
 		$disabled_text         = $is_form_editor ? 'disabled="disabled"' : '';
 		$required_attribute    = $this->isRequired ? 'aria-required="true"' : '';
 		$invalid_attribute     = $this->failed_validation ? 'aria-invalid="true"' : 'aria-invalid="false"';
 		$describedby_attribute = $this->get_aria_describedby();
-		$coverfeechacked = '';
-		$coverFeeCustomer = isset($_POST["input_{$id}_4"]) ? $_POST["input_{$id}_4"] : $this->CoverFeeCustomer;
+		$recoverfeeschacked = '';
+		$recoverFeesCustomer = isset($_POST["input_{$id}_4"]) ? $_POST["input_{$id}_4"] : $this->RecoverFeesCustomer;
 		if(isset($_POST["input_{$id}_1"])){
-			$coverfeechacked = 'checked="checked"';
+			$recoverfeeschacked = 'checked="checked"';
 		}
-		if($this->CoverFee == 'yes'){
-			if($coverFeeCustomer === ''){
-				$coverfeechacked = 'checked="checked"';
+		if($this->RecoverFees == 'yes'){
+			if($recoverFeesCustomer === ''){
+				$recoverfeeschacked = 'checked="checked"';
 			}
 		}
-//		var_dump($coverFeeCustomer);
 		$tabindex = $this->get_tabindex();
-		return "<span class='ginput_container ginput_container_product_fee'>
-			<input name='input_{$id}_1' id='{$field_id}' type='checkbox' ".$coverfeechacked." value='yes' class='gfield_coverfee' {$tabindex} {$placeholder_attribute} {$required_attribute} {$invalid_attribute} {$describedby_attribute} {$disabled_text}/>
-			<input name='input_{$id}_2' id='{$field_id}_2' type='hidden' value='{$this->FixedFee}' class='gfield_fixedfee' {$placeholder_attribute} {$required_attribute} {$invalid_attribute} {$describedby_attribute} {$disabled_text}/>
-			<input name='input_{$id}_3' id='{$field_id}_3' type='hidden' value='{$this->ProcentFee}' class='gfield_procentfee'  {$placeholder_attribute} {$required_attribute} {$invalid_attribute} {$describedby_attribute} {$disabled_text}/>
-			<input name='input_{$id}_4' id='{$field_id}_4' type='hidden' value='{$coverFeeCustomer}' class='gfield_coverfeecustomer'  {$placeholder_attribute} {$required_attribute} {$invalid_attribute} {$describedby_attribute} {$disabled_text}/>
+		return "<span class='ginput_container ginput_container_product_fees'>
+			<input name='input_{$id}_1' id='{$field_id}' type='checkbox' ".$recoverfeeschacked." value='yes' class='gfield_recoverfees' {$tabindex} {$placeholder_attribute} {$required_attribute} {$invalid_attribute} {$describedby_attribute} {$disabled_text}/>
+			<input name='input_{$id}_2' id='{$field_id}_2' type='hidden' value='{$this->FixedFees}' class='gfield_fixedfees' {$placeholder_attribute} {$required_attribute} {$invalid_attribute} {$describedby_attribute} {$disabled_text}/>
+			<input name='input_{$id}_3' id='{$field_id}_3' type='hidden' value='{$this->ProcentFees}' class='gfield_procentfees'  {$placeholder_attribute} {$required_attribute} {$invalid_attribute} {$describedby_attribute} {$disabled_text}/>
+			<input name='input_{$id}_4' id='{$field_id}_4' type='hidden' value='{$recoverFeesCustomer}' class='gfield_recoverfeescustomer'  {$placeholder_attribute} {$required_attribute} {$invalid_attribute} {$describedby_attribute} {$disabled_text}/>
 		</span>";
 	}
 
@@ -107,34 +105,34 @@ class GF_Field_RecoverFee extends GF_Field
 		$is_admin        = $is_entry_detail || $is_form_editor;
 		$field_label     = $this->get_field_label( $force_frontend_label, $value );
 		$field_id        = $is_admin || $form_id == 0 ? "input_{$this->id}" : 'input_' . $form_id . "_{$this->id}";
-		$label = str_replace('%COVERFEE%', '', $field_label);
-		$field_content = sprintf( "%s{FIELD}<label class='gfield_label gform-field-label gform-label_product_fee' for='%s' data-label-tootlip='%s'>%s</label>", $admin_buttons, $field_id, $field_label,$label );
+		$label = str_replace('%RECOVERFEE%', '', $field_label);
+		$field_content = sprintf( "%s{FIELD}<label class='gfield_label gform-field-label gform-label_product_fees' for='%s' data-label-tootlip='%s'>%s</label>", $admin_buttons, $field_id, $field_label,$label );
 		return $field_content;
 	}
 	public function get_value_save_entry( $value, $form, $input_name, $lead_id, $lead ) {
 		$id              = (int) $this->id;
 		foreach ($form['fields'] as $field) {
-			if($field->type == 'coverfee'){
-				$coverfeechacked = false;
-				$coverFeeCustomer = isset($_POST["input_{$id}_4"]) ? $_POST["input_{$id}_4"] : $this->CoverFeeCustomer;
+			if($field->type == 'recoverfees'){
+				$recoverfeeschacked = false;
+				$recoverFeesCustomer = isset($_POST["input_{$id}_4"]) ? $_POST["input_{$id}_4"] : $this->RecoverFeesCustomer;
 				if(isset($_POST["input_{$id}_1"])){
-					$coverfeechacked = true;
+					$recoverfeeschacked = true;
 				}
-				if($this->CoverFee == 'yes'){
-					if($coverFeeCustomer === ''){
-						$coverfeechacked = true;
+				if($this->RecoverFees == 'yes'){
+					if($recoverFeesCustomer === ''){
+						$recoverfeeschacked = true;
 					}
 				}
-				if($coverfeechacked === true){
-					if(!empty($this->FixedFee)){
+				if($recoverfeeschacked === true){
+					if(!empty($this->FixedFees)){
 						$currency = GFCommon::get_currency();
-						$value   .= GFCommon::to_money( $this->FixedFee, $currency );
+						$value   .= GFCommon::to_money( $this->FixedFees, $currency );
 					}
-					if(!empty($this->ProcentFee)){
+					if(!empty($this->ProcentFees)){
 						if(!empty($value)){
 							$value .= '+';
 						}
-						$value .= $this->ProcentFee."%";
+						$value .= $this->ProcentFees."%";
 					}
 				}
 			}

@@ -18,7 +18,7 @@ class GF_SearchFilter
 				if (!empty($field_id)) {
 					$field_one = GFAPI::get_field($form_id, $field_id);
 					if (!empty($field_one)) {
-						if ($field_one->type == 'recoverfee') {
+						if ($field_one->type == 'recoverfees') {
 							$operator = $field_filter['operator'];
 							$value = $field_filter['value'];
 							if (strtolower($value) == 'no') {
