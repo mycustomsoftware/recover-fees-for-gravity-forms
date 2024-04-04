@@ -9,7 +9,7 @@ if(!class_exists('GFForms')){
 GFForms::include_addon_framework();
 class GfRecoveryFees extends \GFAddOn
 {
-	protected $_version = '1.0';
+	protected $_version = '1.0.1';
 	protected $_min_gravityforms_version = '1.9';
 	protected $_slug = 'gravityrecoverfees';
 	protected $_path = 'gravityrecoverfees/includes/GfRecoveryFees.php';
