@@ -18,9 +18,9 @@ class GF_Cerover_Fees_Settings
 					<span>Fixed amount cover fee</span><br/>
 					<input id="forms_fixedfee" type="text" class="forms_fixedfees">
 				</label>
-				<label for="forms_procentfees">
-					<span>Procent of Cover fee</span><br/>
-					<input id="forms_procentfees" type="text" class="forms_procentfees">
+				<label for="forms_percentfees">
+					<span>Percent of Cover fee</span><br/>
+					<input id="forms_percentfees" type="text" class="forms_percentfees">
 				</label>
                 <input id="forms_recoverfees" type="checkbox" class="forms_recoverfees">
 				<label for="forms_recoverfees">

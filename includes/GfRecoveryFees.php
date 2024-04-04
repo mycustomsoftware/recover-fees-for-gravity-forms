@@ -108,9 +108,9 @@ class GfRecoveryFees extends \GFAddOn
 							'class'             => 'small',
 						),
 						array(
-							'name'              => 'fdlprocent',
+							'name'              => 'fdlpercent',
 //							'tooltip'           => esc_html__( 'This is the tooltip', 'simpleaddon' ),
-							'label'             => esc_html__( 'Default fee parent of total amount', 'simpleaddon' ),
+							'label'             => esc_html__( 'Default fee percent of total amount', 'simpleaddon' ),
 							'type'              => 'text',
 							'class'             => 'small',
 						)

@@ -42,13 +42,13 @@ class GF_Recover_Fees_In_Order
 			}
 		}
 		if(!empty($entry[$recoverfees->id])){
-			$Procent    = (float)$recoverfees->ProcentFees;
+			$Percent    = (float)$recoverfees->PercentFees;
 			$FixedFees   = (float)$recoverfees->FixedFees;
-			$ProcentFees = 0;
-			if(!empty($Procent)){
-				$ProcentFees = $subtotal / 100 * $Procent;
+			$PercentFees = 0;
+			if(!empty($Percent)){
+				$PercentFees = $subtotal / 100 * $Percent;
 			}
-			$price      = $ProcentFees+$FixedFees;
+			$price      = $PercentFees+$FixedFees;
 			$cents      = round($price);
 			$feecost    = round($price - $cents,3,PHP_ROUND_HALF_UP);
 			$feecost    = ceil($feecost*100);

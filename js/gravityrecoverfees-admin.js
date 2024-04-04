@@ -6,9 +6,9 @@ jQuery(function($) {
 		SetFieldProperty('FixedFees', number);
 		jQuery(".field_selected .gfield_fixedfees").val(number);
 	}
-	const setProcentFees = (number) => {
-		SetFieldProperty('ProcentFees', number);
-		jQuery(".field_selected .gfield_procentfees").val(number);
+	const setPercentFees = (number) => {
+		SetFieldProperty('PercentFees', number);
+		jQuery(".field_selected .gfield_percentfees").val(number);
 	}
 	const setRecoverFees = (isSelected) => {
 		SetFieldProperty('RecoverFees', isSelected);
@@ -17,8 +17,8 @@ jQuery(function($) {
 	$(document).on('change','.forms_fixedfees',function (event) {
 		setFixedFees($(this).val());
 	});
-	$(document).on('change','.forms_procentfees',function (event) {
-		setProcentFees($(this).val());
+	$(document).on('change','.forms_percentfees',function (event) {
+		setPercentFees($(this).val());
 	});
 	$(document).on('change','.forms_recoverfees',function (event) {
 		setRecoverFees($(this).is(':checked') ? 'yes' : 'no');
@@ -33,8 +33,8 @@ jQuery(function($) {
 			if(gravityrecoverfees_js_strings.fdlfixed !== ""){
 				field.FixedFees = gravityrecoverfees_js_strings.fdlfixed;
 			}
-			if(gravityrecoverfees_js_strings.fdlprocent !== ""){
-				field.ProcentFees = gravityrecoverfees_js_strings.fdlprocent;
+			if(gravityrecoverfees_js_strings.fdlpercent !== ""){
+				field.PercentFees = gravityrecoverfees_js_strings.fdlpercent;
 			}
 		}
 	});
@@ -43,8 +43,8 @@ jQuery(function($) {
 			if(field.FixedFees){
 				$('body').find('.forms_fixedfees').val(field.FixedFees);
 			}
-			if(field.ProcentFees){
-				$('body').find('.forms_procentfees').val(field.ProcentFees);
+			if(field.PercentFees){
+				$('body').find('.forms_percentfees').val(field.PercentFees);
 			}
 			if(field.RecoverFees === 'yes'){
 				$('body').find('.forms_recoverfees').prop('checked', true);

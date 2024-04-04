@@ -8,7 +8,7 @@
  * Author URI: https://github.com/mycustomsoftware
  *  License: GPL3
  * License URI: https://www.gnu.org/licenses/gpl-3.0.html
- * Requires PHP: 8.2
+ * Requires PHP: 8.0
 **/
 if ( ! defined( 'ABSPATH' ) ) {
 	die();

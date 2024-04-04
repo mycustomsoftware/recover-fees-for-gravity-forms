@@ -10,7 +10,7 @@ use GFCommon;
 class GF_Field_RecoverFees extends GF_Field
 {
 	public $type              = 'recoverfees';
-	public $ProcentFees        = 0;
+	public $PercentFees        = 0;
 	public $FixedFees          = 0;
 	public $RecoverFees          = 'no';
 	public $RecoverFeesCustomer  = '';
@@ -92,7 +92,7 @@ class GF_Field_RecoverFees extends GF_Field
 		return "<span class='ginput_container ginput_container_product_fees'>
 			<input name='input_{$id}_1' id='{$field_id}' type='checkbox' ".$recoverfeeschacked." value='yes' class='gfield_recoverfees' {$tabindex} {$placeholder_attribute} {$required_attribute} {$invalid_attribute} {$describedby_attribute} {$disabled_text}/>
 			<input name='input_{$id}_2' id='{$field_id}_2' type='hidden' value='{$this->FixedFees}' class='gfield_fixedfees' {$placeholder_attribute} {$required_attribute} {$invalid_attribute} {$describedby_attribute} {$disabled_text}/>
-			<input name='input_{$id}_3' id='{$field_id}_3' type='hidden' value='{$this->ProcentFees}' class='gfield_procentfees'  {$placeholder_attribute} {$required_attribute} {$invalid_attribute} {$describedby_attribute} {$disabled_text}/>
+			<input name='input_{$id}_3' id='{$field_id}_3' type='hidden' value='{$this->PercentFees}' class='gfield_percentfees'  {$placeholder_attribute} {$required_attribute} {$invalid_attribute} {$describedby_attribute} {$disabled_text}/>
 			<input name='input_{$id}_4' id='{$field_id}_4' type='hidden' value='{$recoverFeesCustomer}' class='gfield_recoverfeescustomer'  {$placeholder_attribute} {$required_attribute} {$invalid_attribute} {$describedby_attribute} {$disabled_text}/>
 		</span>";
 	}
@@ -128,11 +128,11 @@ class GF_Field_RecoverFees extends GF_Field
 						$currency = GFCommon::get_currency();
 						$value   .= GFCommon::to_money( $this->FixedFees, $currency );
 					}
-					if(!empty($this->ProcentFees)){
+					if(!empty($this->PercentFees)){
 						if(!empty($value)){
 							$value .= '+';
 						}
-						$value .= $this->ProcentFees."%";
+						$value .= $this->PercentFees."%";
 					}
 				}
 			}

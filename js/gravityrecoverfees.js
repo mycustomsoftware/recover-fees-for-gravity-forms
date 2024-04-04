@@ -11,15 +11,15 @@ jQuery(function($) {
 				var product_fees_container = $('body').find('.ginput_container_product_fees');
 				var checkBox = product_fees_container.find('.gfield_recoverfees');
 				var IsRecoverFees = checkBox.is(':checked') ? 1 : 0;
-					let procentfees = parseFloat(product_fees_container.find('.gfield_procentfees').val());
+					let percentfees = parseFloat(product_fees_container.find('.gfield_percentfees').val());
 					var fixedfees = parseFloat(product_fees_container.find('.gfield_fixedfees').val());
 					price = total + fixedfees;
-					procentfees = total / 100 * procentfees;
+					percentfees = total / 100 * percentfees;
 					let html = $('body').find('.gform-label_product_fees').attr('data-label-tootlip');
-					html = html.replace(new RegExp('%RECOVERFEE%','g'),gformFormatMoney(procentfees+fixedfees));
+					html = html.replace(new RegExp('%RECOVERFEE%','g'),gformFormatMoney(percentfees+fixedfees));
 					$('body').find('.gform-label_product_fees').html(html);
 					if(IsRecoverFees === 1 && total > 0) {
-						total = price + procentfees;
+						total = price + percentfees;
 					}
 			}
 			return total;
