@@ -1,10 +1,10 @@
 {
-  "name": "gravityrecoverfees",
+  "name": "recover-fees-for-gravity-forms",
   "version": "1.0.0",
   "author": "Marcus {code} <mark.tanasevich@gmail.com>",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "minify": "minify ./js/gravityrecoverfees.js  > ./js/gravityrecoverfees.min.js && minify ./js/gravityrecoverfees-admin.js > ./js/gravityrecoverfees-admin.min.js"
+    "minify": "minify ./js/recover-fees-for-gravity-forms.js  > ./js/recover-fees-for-gravity-forms.min.js && minify ./js/recover-fees-for-gravity-forms-admin.js > ./js/recover-fees-for-gravity-forms-admin.min.js"
   },
   "devDependencies": {
     "minify": "^11.1.1"

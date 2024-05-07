@@ -1,11 +1,11 @@
 <?php
 
-namespace GravityRecoverFees;
+namespace RecoverFeesForGravityForms;
 if(!class_exists('GFAPI')){
 	return;
 }
 use GFAPI;
-class GF_SearchFilter
+class GF_Search_Filter
 {
 	function __construct(){
 		add_filter( 'gform_search_criteria_entry_list', array( $this, 'search_entry_list' ), 9, 2 );

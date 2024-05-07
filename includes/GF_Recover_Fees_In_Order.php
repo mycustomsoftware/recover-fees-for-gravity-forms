@@ -1,5 +1,5 @@
 <?php
-namespace GravityRecoverFees;
+namespace RecoverFeesForGravityForms;
 if(!class_exists('GFForms')){
 	return;
 }

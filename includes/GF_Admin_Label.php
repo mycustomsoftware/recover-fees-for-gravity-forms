@@ -1,8 +1,8 @@
 <?php
 
-namespace GravityRecoverFees;
+namespace RecoverFeesForGravityForms;
 
-class GF_AdminLabel
+class GF_Admin_Label
 {
 	function __construct(){
 		add_filter( 'gform_entry_list_column_input_label_only', array($this,'label_only'), 10, 3 );

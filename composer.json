@@ -1,5 +1,5 @@
 {
-  "name": "marcuscode/gravityrecoverfees",
+  "name": "marcuscode/recover-fees-for-gravity-forms",
   "description": "description",
   "minimum-stability": "stable",
   "license": "proprietary",
@@ -13,7 +13,7 @@
   },
   "autoload": {
     "psr-4": {
-      "GravityRecoverFees\\": "includes/"
+      "RecoverFeesForGravityForms\\": "includes/"
     }
   }
 }

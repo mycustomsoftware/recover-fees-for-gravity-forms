@@ -1,13 +1,13 @@
 <?php
 
-namespace GravityRecoverFees;
+namespace RecoverFeesForGravityForms;
 
 use GFForms;
 if(!class_exists('GFForms')){
 	return;
 }
 GFForms::include_addon_framework();
-class GfRecoveryFees extends \GFAddOn
+class Gf_Recovery_Fees extends \GFAddOn
 {
 	protected $_version = '1.0.1';
 	protected $_min_gravityforms_version = '1.9';
@@ -52,12 +52,20 @@ class GfRecoveryFees extends \GFAddOn
 		$default_settings = get_option('gravityformsaddon_gravityrecoverfees_settings');
 		$default_settings['fdllabel'] = !empty($default_settings['fdllabel']) ? $default_settings['fdllabel'] : 'Help cover our transaction fees %RECOVERFEE% so 100% of your donation get\'s to us.';
 		$default_settings['fdlfixed'] = !empty($default_settings['fdlfixed']) ? $default_settings['fdlfixed'] : '0.31';
-		$mod = GRAVITYRECOVERFEES_ENV == 'production' ? '.min' : '';
-		$default_settings['isDevMod'] = GRAVITYRECOVERFEES_ENV;
+		$mod_defined = 'production';
+		if (defined('RECOVER_FEES_FOR_GRAVITY_FORMS_ENV') && RECOVER_FEES_FOR_GRAVITY_FORMS_ENV) {
+			$mod_defined = RECOVER_FEES_FOR_GRAVITY_FORMS_ENV;
+		}
+		$mod = $mod_defined == 'production' ? '.min' : '';
+		$default_settings['isDevMod'] = $mod_defined;
+		$defined_path = dirname(__DIR__) . '/recover-fees-for-gravity-forms.php';
+		if (defined('RECOVER_FEES_FOR_GRAVITY_FORMS_ENV') && RECOVER_FEES_FOR_GRAVITY_FORMS_ENV) {
+			$defined_path = RECOVER_FEES_FOR_GRAVITY_FORMS_MAIN_FILE;
+		}
 		$scripts = array(
 			array(
-				'handle'  => 'gravityrecoverfees_js',
-				'src'     => plugins_url( '',GFCF_FILE ). "/js/gravityrecoverfees-admin{$mod}.js",
+				'handle'  => 'recover_fees_for_gravity_forms_js',
+				'src'     => plugin_dir_url( $defined_path ). "/js/recover-fees-for-gravity-forms-admin{$mod}.js",
 				'version' => $this->_version,
 				'deps'    => array( 'jquery' ),
 				'strings'    => $default_settings,
@@ -66,8 +74,8 @@ class GfRecoveryFees extends \GFAddOn
 				)
 			),
 			array(
-				'handle'  => 'gravityrecoverfees_js_frontend',
-				'src'     => plugins_url( '',GFCF_FILE ). "/js/gravityrecoverfees{$mod}.js",
+				'handle'  => 'recover_fees_for_gravity_forms_js_frontend',
+				'src'     => plugins_url( '',$defined_path ). "/js/recover-fees-for-gravity-forms{$mod}.js",
 				'version' => $this->_version,
 				'deps'    => array( 'jquery' ),
 				'enqueue' => array(
@@ -86,12 +94,12 @@ class GfRecoveryFees extends \GFAddOn
 	public function plugin_settings_fields() {
 			return array(
 				array(
-					'title'  => esc_html__( 'Recover fee Add-On Settings', 'simpleaddon' ),
+					'title'  => esc_html__( 'Recover fee Add-On Settings', 'recover-fees-for-gravity-forms' ),
 					'fields' => array(
 						array(
 							'name'              => 'fdllabel',
-							'tooltip'           => 'Use <b>%RECOVERFEE%</b> in Field Label to display fee total</small>',
-							'label'             => esc_html__( 'Set default field label', 'simpleaddon' ),
+							'tooltip'           => sprintf('<small>%s</small>', esc_html__( 'Use %RECOVERFEE% in Field Label to display fee total', 'recover-fees-for-gravity-forms' ) ),
+							'label'             => esc_html__( 'Set default field label', 'recover-fees-for-gravity-forms' ),
 							'type'              => 'text',
 							'class'             => 'small',
 							'value'             => 'Help cover our transaction fees %RECOVERFEE% so 100% of your donation get\'s to us.',
@@ -101,16 +109,16 @@ class GfRecoveryFees extends \GFAddOn
 						),
 						array(
 							'name'              => 'fdlfixed',
-//							'tooltip'           => esc_html__( 'This is the tooltip', 'simpleaddon' ),
-							'label'             => esc_html__( 'Default fee fixed amount', 'simpleaddon' ),
+//							'tooltip'           => esc_html__( 'This is the tooltip', 'recover-fees-for-gravity-forms' ),
+							'label'             => esc_html__( 'Default fee fixed amount', 'recover-fees-for-gravity-forms' ),
 							'type'              => 'text',
 							'value'             => '0.31',
 							'class'             => 'small',
 						),
 						array(
 							'name'              => 'fdlpercent',
-//							'tooltip'           => esc_html__( 'This is the tooltip', 'simpleaddon' ),
-							'label'             => esc_html__( 'Default fee percent of total amount', 'simpleaddon' ),
+//							'tooltip'           => esc_html__( 'This is the tooltip', 'recover-fees-for-gravity-forms' ),
+							'label'             => esc_html__( 'Default fee percent of total amount', 'recover-fees-for-gravity-forms' ),
 							'type'              => 'text',
 							'class'             => 'small',
 						)
@@ -122,7 +130,7 @@ class GfRecoveryFees extends \GFAddOn
 //		$styles = array(
 //			array(
 //				'handle'  => 'cover_fee_css',
-//				'src'     => plugins_url( '',GFCF_FILE ). '/css/cover_fee_styles.css',
+//				'src'     => plugins_url( '',RECOVER_FEES_FOR_GRAVITY_FORMS_MAIN_FILE ). '/css/cover_fee_styles.css',
 //				'version' => $this->_version,
 //				'enqueue' => array(
 //					array( $this, 'should_enqueue_admin_script' ),

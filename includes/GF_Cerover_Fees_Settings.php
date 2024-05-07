@@ -1,6 +1,6 @@
 <?php
 
-namespace GravityRecoverFees;
+namespace RecoverFeesForGravityForms;
 
 class GF_Cerover_Fees_Settings
 {
