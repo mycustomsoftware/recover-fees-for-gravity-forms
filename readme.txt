@@ -7,8 +7,6 @@ Requires PHP: 7.4.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Enables the previous "classic" editor and the old-style Edit Post screen with TinyMCE, Meta Boxes, etc. Supports all plugins that extend this screen.
-
 == Description ==
 
 Recover Fees for Gravity Forms for Gravity Forms

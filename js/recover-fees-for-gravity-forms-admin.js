@@ -25,7 +25,6 @@ jQuery(function($) {
 	});
 	$(document).on('gform_field_added', function(event, form, field){
 		if(field.type === 'recoverfees'){
-
 			if(gravityrecoverfees_js_strings.fdllabel !== ""){
 				$('[for="input_'+field.id+'"]').text(gravityrecoverfees_js_strings.fdllabel);
 				field.label = gravityrecoverfees_js_strings.fdllabel;
