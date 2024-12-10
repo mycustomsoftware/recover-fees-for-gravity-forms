@@ -47,8 +47,10 @@ class GF_Field_Recover_Fees extends GF_Field
 
 	function get_form_editor_field_settings() {
 		return array(
+			'conditional_logic_field_setting',
 			'label_setting',
 			'recoverfees_settings',
+			'css_class_setting',
 			'admin_label_setting',
 		);
 	}
@@ -85,12 +87,11 @@ class GF_Field_Recover_Fees extends GF_Field
 			}
 		}
 		$tabindex = $this->get_tabindex();
-		return "<span class='ginput_container ginput_container_product_fees'>
+		return "<div class='ginput_container ginput_container_product_fees'>
 			<input name='input_{$id}_1' id='{$field_id}' type='checkbox' ".$recoverfeeschacked." value='yes' class='gfield_recoverfees' {$tabindex} {$placeholder_attribute} {$required_attribute} {$invalid_attribute} {$describedby_attribute} {$disabled_text}/>
 			<input name='input_{$id}_2' id='{$field_id}_2' type='hidden' value='{$this->FixedFees}' class='gfield_fixedfees' {$placeholder_attribute} {$required_attribute} {$invalid_attribute} {$describedby_attribute} {$disabled_text}/>
 			<input name='input_{$id}_3' id='{$field_id}_3' type='hidden' value='{$this->PercentFees}' class='gfield_percentfees'  {$placeholder_attribute} {$required_attribute} {$invalid_attribute} {$describedby_attribute} {$disabled_text}/>
-			<input name='input_{$id}_4' id='{$field_id}_4' type='hidden' value='{$recoverFeesCustomer}' class='gfield_recoverfeescustomer'  {$placeholder_attribute} {$required_attribute} {$invalid_attribute} {$describedby_attribute} {$disabled_text}/>
-		</span>";
+			<input name='input_{$id}_4' id='{$field_id}_4' type='hidden' value='{$recoverFeesCustomer}' class='gfield_recoverfeescustomer'  {$placeholder_attribute} {$required_attribute} {$invalid_attribute} {$describedby_attribute} {$disabled_text}/>";
 	}
 
 	public function get_field_content( $value, $force_frontend_label, $form ) {
@@ -102,7 +103,7 @@ class GF_Field_Recover_Fees extends GF_Field
 		$field_label     = $this->get_field_label( $force_frontend_label, $value );
 		$field_id        = $is_admin || $form_id == 0 ? "input_{$this->id}" : 'input_' . $form_id . "_{$this->id}";
 		$label           = str_replace('%RECOVERFEE%', '', $field_label);
-		$field_content = sprintf( "%s{FIELD}<label class='gfield_label gform-field-label gform-label_product_fees' for='%s' data-label-tootlip='%s'>%s</label>", $admin_buttons, $field_id, $field_label,$label );
+		$field_content = sprintf( "%s{FIELD}<label class='gfield_label gform-field-label gform-label_product_fees' for='%s' data-label-tootlip='%s'>%s</label></div>", $admin_buttons, $field_id, $field_label,$label );
 		return $field_content;
 	}
 	public function get_value_save_entry( $value, $form, $input_name, $lead_id, $lead ) {
