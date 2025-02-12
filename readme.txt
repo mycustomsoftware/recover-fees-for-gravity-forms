@@ -2,7 +2,7 @@
 Tags: Recover Fees for Gravity Forms
 Requires at least: 6.7.1
 Tested up to: 6.7.1
-Stable tag: 2.0.7
+Stable tag: 2.0.8
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
