@@ -1,54 +1,55 @@
 === Recover Fees for Gravity Forms ===
 Tags: Recover Fees for Gravity Forms
-Requires at least: 6.2
-Tested up to: 6.5
-Stable tag: 2.0.0
-Requires PHP: 7.4.2
+Requires at least: 6.7.1
+Tested up to: 6.7.1
+Stable tag: 2.0.7
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
+Plugin allow you to add a customizable field to your forms, enabling customers to cover these fees.
+
 == Description ==
 
-=== Recover Fees for Gravity Forms – Maximize Your Earnings ===
+**Recover Fees for Gravity Forms – Maximize Your Earnings**
 
-Credit card processing fees can significantly impact your revenue. For instance, nonprofits collectively spend around $3 billion annually on transaction fees ZEFFY. To address this, the Recover Fees for Gravity Forms plugin allows you to add a customizable field to your forms, enabling customers to cover these fees.
+Credit card processing fees can significantly impact your revenue. For instance, nonprofits collectively spend around $3 billion annually on transaction fees. To address this, the Recover Fees for Gravity Forms plugin allows you to add a customizable field to your forms, enabling customers to cover these fees.
 
 == Key Features: ==
 
-Customizable Messaging: Present options like "Include a small processing fee to support our services" or "Add [calculated fee] to cover transaction costs," with the fee amount displayed inline for clarity.
+**Customizable Messaging:** Present options like "Include a small processing fee to support our services" or "Add [calculated fee] to cover transaction costs," with the fee amount displayed inline for clarity.
 
-Flexible Fee Structures: Set percentage-based fees, flat rates, or a combination (e.g., 2.9% + $0.30) to align with your payment processor's charges.
+**Flexible Fee Structures:** Set percentage-based fees, flat rates, or a combination (e.g., 2.9% + $0.30) to align with your payment processor's charges.
 
 User Empowerment: Allow customers to choose whether to cover transaction fees, fostering transparency and trust.
 
 Seamless Integration: Easily incorporate the fee field into any Gravity Form, with automatic fee calculation based on the form's total.
 
-== Key Features: ==
+== Benefits: ==
 
-Increased Revenue: By enabling customers to cover transaction fees, businesses and nonprofits can retain more of their earnings.
+**Increased Revenue:** By enabling customers to cover transaction fees, businesses and nonprofits can retain more of their earnings.
 
-Enhanced Transparency: Clear communication about fees can improve customer satisfaction and trust.
+**Enhanced Transparency:** Clear communication about fees can improve customer satisfaction and trust.
 
 == Who Can Benefit? ==
 
-Nonprofits: Ensure that donations are fully utilized for your cause.
+**Nonprofits:** Ensure that donations are fully utilized for your cause.
 
-Small Businesses: Offset processing costs without increasing product prices.
+**Small Businesses:** Offset processing costs without increasing product prices.
 
-Freelancers: Maintain your full earnings from client payments.
+**Freelancers:** Maintain your full earnings from client payments.
 
 
 == How It Works: ==
 
-Install and Activate: Add the plugin to your WordPress site and activate it.
+**Install and Activate:** Add the plugin to your WordPress site and activate it.
 
-Add the Fee Field: In your Gravity Form, insert the "Recover Fees" field where appropriate.
+**Add the Fee Field:** In your Gravity Form, insert the "Recover Fees" field where appropriate.
 
-Configure Fee Settings: Specify the fee structure (percentage, flat rate, or both) to match your payment processor's fees.
+**Configure Fee Settings:** Specify the fee structure (percentage, flat rate, or both) to match your payment processor's fees.
 
-Customize Messaging: Edit the default message to align with your organization's tone and clearly explain the fee to users.
+**Customize Messaging:** Edit the default message to align with your organization's tone and clearly explain the fee to users.
 
-Publish the Form: Once configured, publish the form. Users will see the option to cover the transaction fee, with the amount displayed inline.
+**Publish the Form:** Once configured, publish the form. Users will see the option to cover the transaction fee, with the amount displayed inline.
 
 Implementing Recover Fees for Gravity Forms empowers your customers to support your organization by covering transaction fees, allowing you to retain the full value of each transaction.
 
@@ -61,6 +62,13 @@ Implementing Recover Fees for Gravity Forms empowers your customers to support y
 
 == Changelog ==
 
+= 2.0.2 =
+
+* Add screenshots.
+* Update the README file
+* Fixed the issue where calculations are not being performed correctly
+* fixed issue that the default settings are applied.
+
 = 1.1.0 =
 
 * Fixed issue where the fee field was not being calculated correctly.
@@ -71,6 +79,3 @@ Initial release.
 
 == Frequently Asked Questions ==
 
-
-
-== Screenshots ==

@@ -13,13 +13,7 @@ jQuery(function($) {
 		$(".gfield--input-type-price input").get(0).dispatchEvent(new Event("change"));
 	}
 	$( document ).on( 'change','.gfield_recoverfees', function (event) {
-		let oldvalue = $(".gfield--input-type-price input").get(0).value;
-		$(".gfield--input-type-price input").get(0).value = "$0";
-		trigger_inputs();
-		setTimeout(()=>{
-			$(".gfield--input-type-price input").get(0).value = oldvalue;
-			trigger_inputs();
-		},100,oldvalue);
+		gformInitPriceFields();
 	});
 	if(gform.addFilter){
 		gform.addFilter( 'gform_product_total', function(total, formId){
@@ -32,7 +26,9 @@ jQuery(function($) {
 				price = total + fixedfees;
 				percentfees = total / 100 * percentfees;
 				let html = $('body').find('.gform-label_product_fees').attr('data-label-tootlip');
-				html = html.replace(new RegExp('%RECOVERFEE%','g'),gformFormatMoney(percentfees+fixedfees));
+				let price_text = gformFormatMoney(percentfees+fixedfees);
+				price_text = `<strong>${price_text}</strong>`;
+				html = html.replace(new RegExp('%RECOVERFEE%','g'),price_text);
 				$('body').find('.gform-label_product_fees').html(html);
 				if(IsRecoverFees === 1 && total > 0) {
 					total = price + percentfees;

@@ -9,7 +9,7 @@ if(!class_exists('GFForms')){
 GFForms::include_addon_framework();
 class Gf_Recovery_Fees extends \GFAddOn
 {
-	protected $_version = '1.0.1';
+	protected $_version = '1.0.2';
 	protected $_min_gravityforms_version = '1.9';
 	protected $_slug = 'recover-fees-for-gravity-forms';
 	protected $_path = 'recover-fees-for-gravity-forms/recover-fees-for-gravity-forms.php';
@@ -49,7 +49,12 @@ class Gf_Recovery_Fees extends \GFAddOn
 		// add tasks or filters here that you want to perform only during ajax requests
 	}
 	public function scripts() {
-		$default_settings = get_option('gravityformsaddon_gravityrecoverfees_settings');
+		$default_settings = get_option('gravityformsaddon_gravityrecoverfees_settings',array(
+			'fdllabel' => 'Help cover our transaction fees %RECOVERFEE% so 100% of your donation get\'s to us.',
+			'fdlfixed'   => '0.31',
+			'fdlpercent' => '',
+			'isDevMod'   => 'production'
+		));
 		$default_settings['fdllabel'] = !empty($default_settings['fdllabel']) ? $default_settings['fdllabel'] : 'Help cover our transaction fees %RECOVERFEE% so 100% of your donation get\'s to us.';
 		$default_settings['fdlfixed'] = !empty($default_settings['fdlfixed']) ? $default_settings['fdlfixed'] : '0.31';
 		$mod_defined = 'production';
