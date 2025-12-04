@@ -17,8 +17,8 @@ jQuery(function($) {
 	});
 	if(gform.addFilter){
 		gform.addFilter( 'gform_product_total', function(total, formId){
-			if($('body').find('.ginput_container_product_fees .gfield_recoverfees').length){
-				var product_fees_container = $('body').find('.ginput_container_product_fees');
+			if($('body').find('#gform_'+formId+' .ginput_container_product_fees .gfield_recoverfees').length){
+				var product_fees_container = $('body').find('#gform_'+formId+' .ginput_container_product_fees');
 				var checkBox = product_fees_container.find('.gfield_recoverfees');
 				var IsRecoverFees = checkBox.is(':checked') ? 1 : 0;
 				let percentfees = parseFloat(product_fees_container.find('.gfield_percentfees').val());
@@ -34,6 +34,7 @@ jQuery(function($) {
 					total = price + percentfees;
 				}
 			}
+
 			return total;
 		},50.999999 );
 	}
