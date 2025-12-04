@@ -35,6 +35,6 @@ jQuery(function($) {
 				}
 			}
 			return total;
-		} );
+		},50.999999 );
 	}
 });

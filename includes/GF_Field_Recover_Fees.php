@@ -103,7 +103,7 @@ class GF_Field_Recover_Fees extends GF_Field
 		$field_label     = $this->get_field_label( $force_frontend_label, $value );
 		$field_id        = $is_admin || $form_id == 0 ? "input_{$this->id}" : 'input_' . $form_id . "_{$this->id}";
 		$label           = str_replace('%RECOVERFEE%', '', $field_label);
-		$field_content = sprintf( "%s{FIELD}<label class='gfield_label gform-field-label gform-label_product_fees' for='%s' data-label-tootlip='%s'>%s</label></div>", $admin_buttons, $field_id, $field_label,$label );
+		$field_content = sprintf( "%s{FIELD}<label class='gfield_label gform-field-label gform-label_product_fees' for='%s' data-label-tootlip='%s'>%s</label></div>", $admin_buttons, $field_id, htmlspecialchars($field_label),$label );
 		return $field_content;
 	}
 	public function get_value_save_entry( $value, $form, $input_name, $lead_id, $lead ) {

@@ -48,13 +48,11 @@ class GF_Recover_Fees_In_Order
 			if(!empty($Percent)){
 				$PercentFees = $subtotal / 100 * $Percent;
 			}
-			$price      = $PercentFees+$FixedFees;
-			$cents      = round($price);
-			$feecost    = round($price - $cents,3,PHP_ROUND_HALF_UP);
-			$feecost    = ceil($feecost*100);
-			$feecost    = $feecost / 100;
-			$price      = $cents + $feecost;
-			$recoverfees_label = "Recover Fees";
+			$price = 0;
+			if($FixedFees > 0){
+				$price = number_format($PercentFees+$FixedFees, 2);
+			}
+			$recoverfees_label = __("Recover Fees");
 			$order['products'][$recoverfees->id] = array(
 				'name'     => $recoverfees_label,
 				'price'    => $price,

@@ -1,8 +1,8 @@
 === Recover Fees for Gravity Forms ===
 Tags: Recover Fees for Gravity Forms
 Requires at least: 6.7.1
-Tested up to: 6.7.1
-Stable tag: 2.0.8
+Tested up to: 6.9
+Stable tag: 2.1.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -61,6 +61,12 @@ Implementing Recover Fees for Gravity Forms empowers your customers to support y
 
 
 == Changelog ==
+
+= 2.1.1 =
+Fixed issue with filter priority of calculation.
+
+= 2.1.0 =
+Recover Fees added as additional line in entry info
 
 = 2.0.2 =
 
