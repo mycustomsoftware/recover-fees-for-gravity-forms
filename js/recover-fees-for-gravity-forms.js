@@ -1,40 +1,62 @@
 jQuery(function($) {
 	var gform = window.gform || {};
-	const trigger_inputs = function(){
-		$('body').find('.gfield_price input').trigger('change');
-		$('body').find('.gfield_price input').get(0).dispatchEvent(new Event("change"));
-		$(".gfield--input-type-price input").get(0).dispatchEvent(new Event("change"));
-		if($('body').find('.ginput_quantity').length){
-			$('body').find('.ginput_quantity').trigger('change');
-			$('body').find('.ginput_quantity').get(0).dispatchEvent(new Event("change"));
+	const changeHtmlLabel = (fee,product_fees_container) => {
+		let price_text = `<strong>${gformFormatMoney(fee)}</strong>`;
+		let label = product_fees_container.find('.gform-label_product_fees');
+		let html = label.attr('data-label-tootlip');
+		html = html.replace(new RegExp('%RECOVERFEE%','g'),price_text);
+		label.html(html);
+	}
+	const inputValueToFloatNumber = (input_val) => {
+		let return_number = 0;
+		if(input_val.trim() !== ""){
+			return_number = parseFloat(input_val);
 		}
-		$('body').find('.gfield_recoverfeescustomer').val('changed');
-		$('body').find('.gfield_recoverfeescustomer').get(0).dispatchEvent(new Event("change"));
-		$(".gfield--input-type-price input").get(0).dispatchEvent(new Event("change"));
+		return return_number;
+	}
+	const convertPercantToFee = (total,percent) => {
+		percentFee = total / 100 * parseFloat(percent);
+		return parseFloat(percentFee.toFixed(2));
 	}
 	$( document ).on( 'change','.gfield_recoverfees', function (event) {
 		gformInitPriceFields();
 	});
 	if(gform.addFilter){
 		gform.addFilter( 'gform_product_total', function(total, formId){
-			if($('body').find('#gform_'+formId+' .ginput_container_product_fees .gfield_recoverfees').length){
-				var product_fees_container = $('body').find('#gform_'+formId+' .ginput_container_product_fees');
-				var checkBox = product_fees_container.find('.gfield_recoverfees');
-				var IsRecoverFees = checkBox.is(':checked') ? 1 : 0;
-				let percentfees = parseFloat(product_fees_container.find('.gfield_percentfees').val());
-				var fixedfees = parseFloat(product_fees_container.find('.gfield_fixedfees').val());
-				price = total + fixedfees;
-				percentfees = total / 100 * percentfees;
-				let html = $('body').find('.gform-label_product_fees').attr('data-label-tootlip');
-				let price_text = gformFormatMoney(percentfees+fixedfees);
-				price_text = `<strong>${price_text}</strong>`;
-				html = html.replace(new RegExp('%RECOVERFEE%','g'),price_text);
-				$('body').find('.gform-label_product_fees').html(html);
-				if(IsRecoverFees === 1 && total > 0) {
-					total = price + percentfees;
-				}
+			var product_fees_container = $('body').find('#gform_'+formId+' .ginput_container_product_fees');
+			if(product_fees_container.length < 1){
+				return total;
 			}
-
+			var checkBox = product_fees_container.find('.gfield_recoverfees');
+			if(checkBox.length < 1){
+				return total;
+			}
+			var IsRecoverFees = checkBox.is(':checked') ? 1 : 0;
+			let percentfees   = inputValueToFloatNumber(product_fees_container.find('.gfield_percentfees').val());
+			var fixedfees     = inputValueToFloatNumber(product_fees_container.find('.gfield_fixedfees').val());
+			let totalFee      = 0;
+			let feePercent    = convertPercantToFee(total,percentfees);
+			// console.log("percentfees:",percentfees);
+			// console.log("fixedfees:",fixedfees);
+			if(fixedfees > 0){
+				totalFee = fixedfees;
+			}
+			if(percentfees > 0){
+				totalFee = parseFloat((feePercent+fixedfees).toFixed(2));
+			}
+			changeHtmlLabel(totalFee,product_fees_container);
+			if(IsRecoverFees !== 1) {
+				return total;
+			}
+			// if(fixedfees > 0) {
+			// 	console.log("fixed fee:",fixedfees);
+			// }
+			// if(percentfees > 0) {
+			// 	console.log("percent fee:",feePercent);
+			// }
+			if(totalFee>0){
+				return total + totalFee;
+			}
 			return total;
 		},50.999999 );
 	}
