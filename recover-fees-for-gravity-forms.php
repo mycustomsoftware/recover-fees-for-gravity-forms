@@ -3,7 +3,7 @@
  * Plugin Name: Recover Fees for Gravity Forms
  * Plugin URI: https://wordpress.org/plugins/recover-fees-for-gravity-forms
  * Description: Let users cover credit card fees in Gravity Forms. Adds a new field type with a checkbox to cover fees, simple setup, customizable fees, and seamless integration boost your payment or fundraising efforts.
- * Version: 2.1.3
+ * Version: 2.1.4
  * Author:      My Custom Software
  * Requires at least: 6.7.1
  * Author URI: https://github.com/mycustomsoftware
@@ -13,6 +13,9 @@
 **/
 if ( ! defined( 'ABSPATH' ) ) {
 	die();
+}
+if(!defined("RECOVER_FEES_FOR_GRAVITY_FORMS_VER")){
+    define("RECOVER_FEES_FOR_GRAVITY_FORMS_VER",'2.1.4');
 }
 require_once __DIR__.'/vendor/autoload.php';
 use RecoverFeesForGravityForms\GF_Admin_Label;
