@@ -21,14 +21,14 @@ jQuery(function($) {
 	$( document ).on( 'change','.gfield_recoverfees', function (event) {
 		gformInitPriceFields();
 	});
-	if(gform.addFilter){
+	var product_fees_container = $('body').find('.ginput_container_product_fees');
+	if(gform.addFilter && product_fees_container.length > 0){
 		gform.addFilter( 'gform_product_total', function(total, formId){
-			var product_fees_container = $('body').find('#gform_'+formId+' .ginput_container_product_fees');
-			if(product_fees_container.length < 1){
-				return total;
-			}
 			var checkBox = product_fees_container.find('.gfield_recoverfees');
 			if(checkBox.length < 1){
+				return total;
+			}
+			if(product_fees_container.find('.gfield_percentfees').length < 1){
 				return total;
 			}
 			var IsRecoverFees = checkBox.is(':checked') ? 1 : 0;
@@ -36,8 +36,6 @@ jQuery(function($) {
 			var fixedfees     = inputValueToFloatNumber(product_fees_container.find('.gfield_fixedfees').val());
 			let totalFee      = 0;
 			let feePercent    = convertPercantToFee(total,percentfees);
-			// console.log("percentfees:",percentfees);
-			// console.log("fixedfees:",fixedfees);
 			if(fixedfees > 0){
 				totalFee = fixedfees;
 			}
@@ -48,12 +46,6 @@ jQuery(function($) {
 			if(IsRecoverFees !== 1) {
 				return total;
 			}
-			// if(fixedfees > 0) {
-			// 	console.log("fixed fee:",fixedfees);
-			// }
-			// if(percentfees > 0) {
-			// 	console.log("percent fee:",feePercent);
-			// }
 			if(totalFee>0){
 				return total + totalFee;
 			}
