@@ -2,6 +2,7 @@ jQuery(function($) {
 	var gform = window.gform || {};
 	const changeHtmlLabel = (fee,product_fees_container) => {
 		let price_text = `<strong>${gformFormatMoney(fee)}</strong>`;
+		console.log(price_text);
 		let label = product_fees_container.find('.gform-label_product_fees');
 		let html = label.attr('data-label-tootlip');
 		html = html.replace(new RegExp('%RECOVERFEE%','g'),price_text);
@@ -24,6 +25,10 @@ jQuery(function($) {
 	var product_fees_container = $('body').find('.ginput_container_product_fees');
 	if(gform.addFilter && product_fees_container.length > 0){
 		gform.addFilter( 'gform_product_total', function(total, formId){
+			var product_fees_container = $('body').find(`#gform_fields_${formId} .ginput_container_product_fees`);
+			if(product_fees_container.length === 0){
+				return total;
+			}
 			var checkBox = product_fees_container.find('.gfield_recoverfees');
 			if(checkBox.length < 1){
 				return total;
