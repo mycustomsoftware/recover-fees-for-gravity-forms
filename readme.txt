@@ -63,6 +63,9 @@ Implementing Recover Fees for Gravity Forms empowers your customers to support y
 == Changelog ==
 
 = 2.1.6 =
+Fixed form scope now it's include pages to.
+
+= 2.1.6 =
 Fixed issue with form wizards if go step back if not counting and responding.
 
 = 2.1.2 =

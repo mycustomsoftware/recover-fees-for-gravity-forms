@@ -25,7 +25,7 @@ jQuery(function($) {
 	var product_fees_container = $('body').find('.ginput_container_product_fees');
 	if(gform.addFilter && product_fees_container.length > 0){
 		gform.addFilter( 'gform_product_total', function(total, formId){
-			var product_fees_container = $('body').find(`#gform_fields_${formId} .ginput_container_product_fees`);
+			var product_fees_container = $('body').find(`#gform_${formId} .ginput_container_product_fees`);
 			if(product_fees_container.length === 0){
 				return total;
 			}
