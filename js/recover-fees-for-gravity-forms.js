@@ -2,16 +2,20 @@ jQuery(function($) {
 	var gform = window.gform || {};
 	const changeHtmlLabel = (fee,product_fees_container) => {
 		let price_text = `<strong>${gformFormatMoney(fee)}</strong>`;
-		console.log(price_text);
 		let label = product_fees_container.find('.gform-label_product_fees');
 		let html = label.attr('data-label-tootlip');
 		html = html.replace(new RegExp('%RECOVERFEE%','g'),price_text);
 		label.html(html);
 	}
+
+	const sanitizeValue = (value) => {
+		return value.trim().replace(new RegExp(' ','g'), '').replace(new RegExp(',','g'), '.');
+	}
 	const inputValueToFloatNumber = (input_val) => {
 		let return_number = 0;
-		if(input_val.trim() !== ""){
-			return_number = parseFloat(input_val);
+		let sanitize_val  = sanitizeValue(input_val).replace(new RegExp('%','g'), '');
+		if(sanitize_val !== ""){
+			return_number = parseFloat(sanitize_val);
 		}
 		return return_number;
 	}

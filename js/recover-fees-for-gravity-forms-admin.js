@@ -8,15 +8,34 @@ jQuery(function($) {
 		SetFieldProperty('PercentFees', number);
 		jQuery(".field_selected .gfield_percentfees").val(number);
 	}
+	const sanitizeValue = (value) => {
+		return value.trim().replace(new RegExp('[a-zA-Z]','g'), '').replace(new RegExp(' ','g'), '').replace(new RegExp(',','g'), '.');
+	}
 	const setRecoverFees = (isSelected) => {
 		SetFieldProperty('RecoverFees', isSelected);
 		jQuery(".field_selected .gfield_recoverfees").prop('checked', isSelected == 'yes');
 	}
-	$(document).on('change','.forms_fixedfees',function (event) {
-		setFixedFees($(this).val());
+	$(document).on('change input','.forms_fixedfees',function (event) {
+		let val = $(this).val();
+		    val = sanitizeValue(val);
+		$(this).val(val);
+		setFixedFees(val);
 	});
-	$(document).on('change','.forms_percentfees',function (event) {
-		setPercentFees($(this).val());
+	$(document).on('change input','.forms_percentfees',function (event) {
+		let val = $(this).val();
+		    val = sanitizeValue(val).replace(new RegExp('%','g'), '');
+			$(this).val(val);
+		setPercentFees(val);
+	});
+	$(document).on('change input','[name="_gform_setting_fdlpercent"]',function (event) {
+		let val = $(this).val();
+		    val = sanitizeValue(val).replace(new RegExp('%','g'), '');
+			$(this).val(val);
+	});
+	$(document).on('change input','[name="_gform_setting_fdlfixed"]',function (event) {
+		let val = $(this).val();
+		    val = sanitizeValue(val);
+			$(this).val(val);
 	});
 	$(document).on('change','.forms_recoverfees',function (event) {
 		setRecoverFees($(this).is(':checked') ? 'yes' : 'no');

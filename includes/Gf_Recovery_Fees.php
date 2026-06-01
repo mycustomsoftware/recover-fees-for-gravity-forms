@@ -14,8 +14,8 @@ class Gf_Recovery_Fees extends \GFAddOn
 	protected $_slug = 'recover-fees-for-gravity-forms';
 	protected $_path = 'recover-fees-for-gravity-forms/recover-fees-for-gravity-forms.php';
 	protected $_full_path = __FILE__;
-	protected $_title = 'Gravity Forms Recover Fees Add-On';
-	protected $_short_title = 'Recover Fees Add-On';
+	protected $_title = 'Gravity forms recover fees';
+	protected $_short_title = 'Recover fees';
 	private static $_instance = null;
 	public static function get_instance() {
 		if ( self::$_instance == null ) {
@@ -70,7 +70,7 @@ class Gf_Recovery_Fees extends \GFAddOn
 		$scripts = array(
 			array(
 				'handle'  => 'recover_fees_for_gravity_forms_js',
-				'src'     => plugin_dir_url( $defined_path ). "/js/recover-fees-for-gravity-forms-admin{$mod}.js",
+				'src'     => plugin_dir_url( $defined_path ). "js/recover-fees-for-gravity-forms-admin{$mod}.js",
 				'version' => $this->_version,
 				'deps'    => array( 'jquery' ),
 				'strings'    => $default_settings,
@@ -80,7 +80,7 @@ class Gf_Recovery_Fees extends \GFAddOn
 			),
 			array(
 				'handle'  => 'recover_fees_for_gravity_forms_js_frontend',
-				'src'     => plugins_url( '',$defined_path ). "/js/recover-fees-for-gravity-forms{$mod}.js",
+				'src'     => plugins_url( '',$defined_path ). "js/recover-fees-for-gravity-forms{$mod}.js",
 				'version' => $this->_version,
 				'deps'    => array( 'jquery' ),
 				'enqueue' => array(
@@ -91,7 +91,7 @@ class Gf_Recovery_Fees extends \GFAddOn
 		return array_merge( parent::scripts(), $scripts );
 	}
 	public function should_enqueue_admin_script() {
-		return (rgget( 'page' ) == 'gf_edit_forms');
+		return (rgget( 'page' ) == 'gf_edit_forms' || rgget( 'page' ) == 'gf_settings');
 	}
 	public function should_enqueue_frontend_script() {
 		return !GFForms::get_page();
@@ -99,7 +99,7 @@ class Gf_Recovery_Fees extends \GFAddOn
 	public function plugin_settings_fields() {
 			return array(
 				array(
-					'title'  => esc_html__( 'Recover fee Add-On Settings', 'recover-fees-for-gravity-forms' ),
+					'title'  => esc_html__( 'Recover fee settings', 'recover-fees-for-gravity-forms' ),
 					'fields' => array(
 						array(
 							'name'              => 'fdllabel',
